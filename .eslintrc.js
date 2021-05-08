@@ -4,6 +4,7 @@ module.exports = {
         "es2021": true , 
         "es6" : true ,
         "jest" : true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
