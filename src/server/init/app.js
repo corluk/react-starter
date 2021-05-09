@@ -1,5 +1,5 @@
-import MongoConnect, { close as MongoClose } from "./server/db"
-import APP_INIT from "./server/server_init"
+import MongoConnect, { close as MongoClose } from "./db"
+import APP_INIT from "./server"
 
 let app = null
 export const listen = async (app, port) => {
@@ -37,16 +37,13 @@ const init = async (config) => {
 
     if (app == null) {
 
-        const uri = process.env.MONGO_URI || config.mongo_uri
         if (config.mongo_support == true) {
+            const uri = process.env.MONGO_URI || config.mongo_uri
 
-            await MongoConnect(config.mongo_uri)
+            await initMongo(uri)
         }
         app = APP_INIT()
-
-        console.log(config)
-        console.log("uri")
-        console.log(uri)
+ 
 
     }
 
