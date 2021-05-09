@@ -1,5 +1,11 @@
 import React from "react" 
-import ReactDOM from "react-dom" 
+ 
+import {Provider} from "react-redux"
+import front_store from "./store/front_store"
+import Component1 from "./components/index"
 
-
-ReactDOM.render(<h1>Hello World</h1>,document.getElementById("app"))
+const App =  ()=>{
+  return   <Provider store={front_store}><Component1/> </Provider>
+}
+ 
+export default App 

@@ -6,7 +6,7 @@ const LoadablePlugin = require('@loadable/webpack-plugin')
  
 module.exports = {
     context : path.resolve(__dirname,"src") ,
-    entry : "./ssr.jsx" ,
+    entry : "./server.jsx" ,
     mode : "development",
     module : {
         rules: [  {test:/\.jsx?/,

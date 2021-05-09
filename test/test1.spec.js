@@ -1,6 +1,6 @@
 import config from "../config.json"
-import axios from "axios"
  
+import React from "react"
 import findPort from "find-open-port"
 import APP_INIT from "../src/app_init"
 import supertest from "supertest"
@@ -9,6 +9,9 @@ import {expect}  from "chai"
 import MONGO from "../src/server/db"
 import dotenv from "dotenv"
 import {resolve} from "path"
+import ReactRenderer from "react-test-renderer"
+import TestComponent from "../src/front/components/index"
+ 
 beforeAll(async ()=>{
 
 
@@ -34,11 +37,19 @@ test("should server respond 200 " ,async  ()=>{
 
 })
 
-test("mongo client ",async ()=>{ 
+test("should mongo client ping ",async ()=>{ 
    expect(process.env.MONGO_URI).not.undefined
    const mongoClient = await  MONGO(process.env.MONGO_URI)
    const ping =await mongoClient.db("admin").command({ping:1})
    expect(ping).not.to.be.undefined
    await mongoClient.close()
     
+})
+
+test("should mongo",()=>{
+
+    const rendered = ReactRenderer.create(<TestComponent />) 
+    const renderJson = rendered.toJSON()
+        expect(renderJson).not.undefined
+        expect(rendered).not.undefined
 })

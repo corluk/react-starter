@@ -1,10 +1,9 @@
 const path = require("path")
-const webpack = require("webpack")
-const LoadablePlugin = require('@loadable/webpack-plugin')
+ 
  
 module.exports = {
     context : path.resolve(__dirname,"src","front") ,
-    entry : "./App.jsx" ,
+    entry : "./Main.jsx" ,
     mode : "development",
     module : {
         rules: [  {test:/\.jsx?/,
@@ -29,21 +28,6 @@ module.exports = {
          extensions : [".js" , ".jsx" ]
      },
 
-      
-
-      
-    plugins: [
-        new webpack.DefinePlugin({
-            "process.env.NODE_ENV" :JSON.stringify('development') ,
-            "process.env.API_URL"  : JSON.stringify("http://localhost:3000"),
-
-        }),new LoadablePlugin()
-    ],
-    externals : {
-        "ConfigData" : {
-            apiUrl : "http://localhost:3000"
-        }
-    },
  
      
 }
