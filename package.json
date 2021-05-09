@@ -57,7 +57,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "bin" : {
-      "create-react" : "bin/create"
+      "create-react" : "./bin/create.js"
   },
   "scripts": {
     "start": "yarn dev:glup && node_modules/.bin/nodemon -r esm output/server/index.js",
