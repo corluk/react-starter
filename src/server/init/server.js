@@ -8,7 +8,9 @@ import pug from "pug"
 import {ReactDOMServer} from "react-dom/server"
 import {StaticRouter} from "react-router-dom"
 import App from "../../front/App"
-const init = ()=>{
+
+
+const SERVER_INIT = ()=>{
 
   
     const app = Express()
@@ -35,7 +37,7 @@ const init = ()=>{
 
 
 
-export default init  
+export default SERVER_INIT  
  
 
 

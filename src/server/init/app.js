@@ -1,5 +1,5 @@
 import MongoConnect, { close as MongoClose } from "./db"
-import APP_INIT from "./server"
+import SERVER_INIT from "./server"
 
 let app = null
 export const listen = async (app, port) => {
@@ -42,7 +42,7 @@ const init = async (config) => {
 
             await initMongo(uri)
         }
-        app = APP_INIT()
+        app = SERVER_INIT()
  
 
     }
