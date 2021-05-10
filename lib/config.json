@@ -1,5 +1,0 @@
-{
-    "port" : 8080 ,
-    "mongo_uri" : "mongo://localhost:27017",
-    "a" : 1
-}

@@ -1,60 +1,62 @@
-
-import Express from "express";
+import _Express from "express";
 
 import React from "react";
-import {resolve} from "path";
+import { resolve } from "path";
 
-import STORE from "../front/store/back_store";
+import _Store from "../store";
 
 import ReactDOMServer from "react-dom/server";
-import {StaticRouter} from "react-router-dom";
-import App from "../front/App";
+import { StaticRouter } from "react-router-dom";
+import Root from "../components/Root";
 
+export const createServer = () => {
+  const app = _Express();
 
-export const createServer = ()=>{
+  const jsSource = process.env.NODE_ENV === "development" ? "dev-dist" : "dist";
+  app.set("view engine", "pug");
+  app.set("views", resolve(__dirname, "..", "views"));
+  app.use(_Express.static(resolve(__dirname, "..", "..", jsSource)));
+  app.use(
+    _Express.urlencoded({
+      extended: true,
+    })
+  );
 
+  app.get("/", (req, res) => {
+    const context = {};
+    const url = req.url;
+    console.log(ReactDOMServer);
 
-    const app = Express();
-    app.set("view engine", "pug");
-    app.set("views", resolve(__dirname, "..", "views"));
-    const jsSource = process.env.NODE_ENV == "development" ? "dev-dist" : "dist";
-    console.log("process env");
-    console.log(process.env.NODE_ENV);
-    console.log("jsSource");
-    console.log(jsSource);
-    app.use(Express.static(resolve(__dirname, "..", "..", jsSource)));
-    app.use(Express.urlencoded({
-        extended: true
-    }));
+    const rendered = ReactDOMServer.renderToString(
+      <StaticRouter url={url} context={context}>
+        <Root>
+          <h2>Hello World from Server on SSR</h2>
+        </Root>
+      </StaticRouter>
+    );
 
-    app.get("/", (req, res)=>{
+    console.log(_Store.getState());
 
-
-        const context = {};
-        const url = req.url;
-        console.log(ReactDOMServer);
-        const rendered = ReactDOMServer.renderToString(<StaticRouter url={url} context={context}><App /> </StaticRouter>);
-        console.log(STORE.getState());
-        res.render("index", {
-            content: rendered,
-            preLoadedState: STORE.getState()
-        });
-
+    res.render("index", {
+      content: rendered,
+      preLoadedState: _Store.getState(),
     });
-    return app;
-
+  });
+  return app;
 };
+
 export const listen = async (app, port) => {
-
-    return new Promise((resolve, reject) => {
-
-        const process = app.listen(port);
-        process.on("listening", () => {
-            console.log(`listening on ${port}`);
-            resolve(port);
-        });
-        process.on("error", (err) => {
-            reject(err);
-        });
+  return new Promise((resolved, rejected) => {
+    const process = app.listen(port);
+    process.on("listening", () => {
+      console.log(`listening on ${port}`);
+      resolved(port);
     });
+    process.on("error", (err) => {
+      rejected(err);
+    });
+  });
 };
+
+const server = createServer();
+export default server;

@@ -1,19 +1,17 @@
+import app from "../dev-lib/server/index";
+import findPort from "find-open-port";
+import open from "open";
  
-import {createServer} from "../lib/server/index"
-import findPort from "find-open-port"
-import open from "open"
-import {spawn} from "cross-spawn"
-
-
-
+ 
 
 (async () => {
-    
-    const app = createServer()
-    const port = await findPort() 
-    app.listen(port,()=>{
-
-       // open(`http://localhost:${port}`)
-        console.log(`listening port ${port}`)
-    })
-})()
+    console.log(process.env.NODE_ENV)
+  app.get("/", (req, res) => {
+    res.send("hello world");
+  });
+  const port = await findPort();
+  app.listen(port, () => {
+    open(`http://localhost:${port}`);
+    console.log(`listening port ${port}`);
+  });
+})();

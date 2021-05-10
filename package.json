@@ -40,6 +40,7 @@
     "cross-spawn": "^7.0.3",
     "del": "^6.0.0",
     "eslint": "^7.25.0",
+    "eslint-plugin-chai-friendly": "^0.7.1",
     "eslint-plugin-react": "^7.23.2",
     "find-open-port": "^2.0.3",
     "gulp": "^4.0.2",
@@ -63,9 +64,12 @@
     "webpack-node-externals": "^3.0.0"
   },
   "scripts": {
-    "prestart": "node_modules/.bin/rimraf dev-* delete*",
-    "start": "node_modules/.bin/npm-run-all --parallel dev:*",
-    "lint": "node_modules/.bin/eslint -c .eslintrc.js -o out/reports.txt --debug",
+    "poststart": "node_modules/.bin/rimraf dev-* delete*",
+    "start" : "node_modules/.bin/cross-env NODE_ENV=development  node -r esm test/server.js",
+    "start:watch": "node_modules/.bin/run-p   dev:glup    dev:webpack",
+    "lint:pretty": "node_modules/.bin/prettier -w test src",
+    "lint:eslint": "node_modules/.bin/eslint -c .eslintrc.js  -o out/reports.txt --fix   src test  ",
+    "lint": "yarn lint:pretty && yarn lint:eslint ",
     "dev:glup": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/gulp dev  ",
     "dev:server": "node -r esm test/server.js",
     "dev:webpack": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/webpack -c webpack.dev.js",
