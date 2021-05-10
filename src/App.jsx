@@ -8,5 +8,6 @@ ReactDOM.hydrate(
     <Root>
       <h1> Hello World from Javascript after SSR </h1>
     </Root>
-  </BrowserRouter>
+  </BrowserRouter>,
+  document.getElementById("app")
 );

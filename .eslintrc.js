@@ -20,7 +20,6 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "chai-friendly",
         "chai-expect"
     ],
     "rules": {
@@ -78,7 +77,6 @@ module.exports = {
         "space-unary-ops": [2, { "words": true, "nonwords": false }],
         "strict": [2, "function"],
         "yoda": [2, "never"],
-        "chai-friendly/no-unused-expressions": 2,
         "chai-expect/no-inner-compare": 2,
         "chai-expect/no-inner-literal": 2,
         "chai-expect/missing-assertion": 2,

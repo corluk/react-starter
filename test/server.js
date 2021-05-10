@@ -1,11 +1,9 @@
 import app from "../dev-lib/server/index";
 import findPort from "find-open-port";
 import open from "open";
- 
- 
 
 (async () => {
-    console.log(process.env.NODE_ENV)
+  console.log(process.env.NODE_ENV);
   app.get("/", (req, res) => {
     res.send("hello world");
   });

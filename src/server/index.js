@@ -30,7 +30,7 @@ export const createServer = () => {
     const rendered = ReactDOMServer.renderToString(
       <StaticRouter url={url} context={context}>
         <Root>
-          <h2>Hello World from Server on SSR</h2>
+          <h1>Hello World from Server on SSR</h1>
         </Root>
       </StaticRouter>
     );
