@@ -77,7 +77,8 @@
     "dev:webpack": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/webpack -c webpack.dev.js",
     "build:webpack": "node_modules/.bin/cross-env NODE_ENV=production    node_modules/.bin/webpack -c webpack.prod.js ",
     "build:glup": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/gulp build ",
-    "build" :"yarn build:webpack && yarn build:glup"
+    "build" :"yarn build:webpack && yarn build:glup",
+    "bootstrap": "node lib/server/bootstrap.js"
   },
   "keywords": [],
   "author": "",

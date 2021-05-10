@@ -9,13 +9,13 @@ const copy = require("copy");
 const ncp = require("ncp").ncp;
 const fs = require("fs");
 const path = require("path");
-const homeDir = process.cwd();
+const homeDir = path.resolve(__dirname,"..");
 
 if (process.argv.length < 3) {
   throw new Error("you must set folder name to install ");
 }
 const projectName = process.argv[2];
-const projectDir = path.resolve(homeDir, projectName);
+const projectDir = path.resolve(process.cwd(), projectName);
 if (!fs.existsSync(projectDir)) {
   fs.mkdirSync(projectDir);
 }
@@ -38,7 +38,7 @@ const strNewPackageJSON = JSON.stringify(newPackageJSON, null, 4);
 fs.writeFileSync(path.resolve(projectDir, "package.json"), strNewPackageJSON);
 
 copy(
-  [path.resolve(homeDir, "*.js"), path.resolve(homeDir, ".gitignore")],
+  [path.resolve(homeDir, "*.js"), path.resolve(homeDir, ".gitignore"),path.resolve(homeDir,"Dockerfile")],
   projectDir,
   (err ) => {
     
@@ -52,16 +52,16 @@ ncp(path.resolve(homeDir, "src"), path.resolve(projectDir, "src"), (err) => {
   if (err) {
     return console.error(err);
   }
-  console.log("done!");
+  console.log("done, copying src files !");
 });
 ncp(path.resolve(homeDir, "test"), path.resolve(projectDir, "test"), (err) => {
   if (err) {
     return console.error(err);
   }
-  console.log("done!");
+  console.log("done copying test files !");
 });
 dependencies = dependencies.filter((item) =>  ["ncp","copy"].indexOf(item) < 0);
 
-console.log(dependencies)
-//spawn(` yarn add ${dependencies.join(" ")}`, { stdio: "inherit" });
-//spawn(` yarn add -D  ${devDependencies.join(" ")}`, { stdio: "inherit" });
+ 
+ spawn(` yarn add ${dependencies.join(" ")}`, { stdio: "inherit" });
+ spawn(` yarn add -D  ${devDependencies.join(" ")}`, { stdio: "inherit" });

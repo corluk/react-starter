@@ -9,5 +9,5 @@ RUN yarn  install
 RUN yarn build 
  
 EXPOSE 8080 
-CMD node lib/server/start.js 
+CMD yarn bootstrap
 
