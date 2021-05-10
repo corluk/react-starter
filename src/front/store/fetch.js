@@ -1,11 +1,11 @@
-import axios from "axios"
- 
-const baseURL  = "http://localhost"
+import axios from "axios";
 
-axios.create({ baseURL : baseURL})
+const baseURL = "http://localhost";
 
-export const fetchDefault= async()=>{
+axios.create({ baseURL: baseURL});
 
-    const response = await axios.get("/") 
-    return response.data 
-}
+export const fetchDefault = async()=>{
+
+    const response = await axios.get("/");
+    return response.data;
+};

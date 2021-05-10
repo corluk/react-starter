@@ -23,7 +23,7 @@ module.exports = {
         publicPath : "/public/assets/js/" ,
         contentBase : path.resolve(__dirname,"public")
     },
-    watch : true ,
+    
      resolve :{
          extensions : [".js" , ".jsx" ]
      },

@@ -1,0 +1,19 @@
+html 
+  head 
+    meta(http-equiv="Content-Type" content="text/html")
+    meta(http-equiv="X-UA-Compatiple" content="ie-egde")
+    meta(name="Description" content="Some desc")
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css")
+  body
+    div(id="app") !{content}
+
+script(type="text/javascript") 
+       | window.__PRELOADED_STATE__ =!{JSON.stringify(preLoadedState)}
+       
+       
+script(src="/bundle.js")
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js")

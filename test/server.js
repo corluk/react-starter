@@ -1,15 +1,19 @@
-import config from "../config.json"
-import APP_INIT from "../out/app_init"
+ 
+import {createServer} from "../lib/server/index"
 import findPort from "find-open-port"
 import open from "open"
-(async () => {
-    config.port = await findPort()
-    console.log(config)
-    config.mongo_enabled  = true 
-    const app = await APP_INIT(config) 
-    app.listen(config.port,()=>{
+import {spawn} from "cross-spawn"
 
-        open(`http://localhost:${config.port}`)
-        console.log(`listening port ${config.port}`)
+
+
+
+(async () => {
+    
+    const app = createServer()
+    const port = await findPort() 
+    app.listen(port,()=>{
+
+       // open(`http://localhost:${port}`)
+        console.log(`listening port ${port}`)
     })
 })()

@@ -1,5 +1,5 @@
 
 
 export default {
-    error : 1
-}
+    error: 1
+};

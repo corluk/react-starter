@@ -1,0 +1,35 @@
+[0m[0m
+[0m[4mG:\starters\react-starter\src\front\store\back_store.js[24m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                 [2mno-empty-label[22m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing  [2mspace-return-throw-case[22m[0m
+[0m[0m
+[0m[4mG:\starters\react-starter\src\front\store\fetch.js[24m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                 [2mno-empty-label[22m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing  [2mspace-return-throw-case[22m[0m
+[0m[0m
+[0m[4mG:\starters\react-starter\src\front\store\front_store.js[24m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                 [2mno-empty-label[22m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing  [2mspace-return-throw-case[22m[0m
+[0m  [2m1:8[22m  [31merror[39m  Identifier 'app_saga' is not in camel case                                   [2mcamelcase[22m[0m
+[0m[0m
+[0m[4mG:\starters\react-starter\src\front\store\initial.js[24m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                 [2mno-empty-label[22m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing  [2mspace-return-throw-case[22m[0m
+[0m[0m
+[0m[4mG:\starters\react-starter\src\front\store\redux.js[24m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                 [2mno-empty-label[22m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing  [2mspace-return-throw-case[22m[0m
+[0m[0m
+[0m[4mG:\starters\react-starter\src\front\store\saga.js[24m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                 [2mno-empty-label[22m[0m
+[0m  [2m1:1[22m  [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing  [2mspace-return-throw-case[22m[0m
+[0m[0m
+[0m[4mG:\starters\react-starter\src\server\index.js[24m[0m
+[0m   [2m1:1[22m   [31merror[39m  Rule 'no-empty-label' was removed and replaced by: no-labels                                   [2mno-empty-label[22m[0m
+[0m   [2m1:1[22m   [31merror[39m  Rule 'space-return-throw-case' was removed and replaced by: keyword-spacing                    [2mspace-return-throw-case[22m[0m
+[0m  [2m17:17[22m  [31merror[39m  A function with a name starting with an uppercase letter should only be used as a constructor  [2mnew-cap[22m[0m
+[0m  [2m20:43[22m  [31merror[39m  Expected '===' and instead saw '=='                                                            [2meqeqeq[22m[0m
+[0m  [2m49:25[22m  [31merror[39m  'resolve' is already declared in the upper scope on line 5 column 9                            [2mno-shadow[22m[0m
+[0m[0m
+[0m[31m[1m✖ 18 problems (18 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m

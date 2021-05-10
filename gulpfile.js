@@ -1,10 +1,11 @@
  
-const { src, dest ,series ,del   } = require('gulp');
+const { src, dest ,series ,watch  } = require('gulp');
 const  babel = require("gulp-babel")
-const clean  = require("del")
+const clean  = require("del");
+const target  =  process.env.NODE_ENV === 'production' ? 'lib/' : 'dev-lib/'
 const fnClean = (cb)=>{
 
-    clean["output/**/*"]
+    clean["lib/**/*"]
     cb()
 }
 const fnReact = (cb)=>{
@@ -12,17 +13,24 @@ const fnReact = (cb)=>{
     'src/**/*.js',
     '!./node_modules/**'])
              .pipe(babel())
-             .pipe(dest("output/"))
+             .pipe(dest(target))
     cb()
 
 }
 
 const cpFn = (cb)=>{
 
-    src(["./src/**/*","!src/**/*.js","!src/**/*.jsx"] ).pipe(dest("output/"))
+    src(["./src/**/*","!src/**/*.js","!src/**/*.jsx"] ).pipe(dest(target))
     cb()
 }
-exports.copy = cpFn 
+const fnWatch = (cb)=>{
+    watch(["src/front/*.js","src/front/*.jsx"],series(fnClean,fnReact,cpFn))
+    cb()
+
+}
+ 
+exports.build = series(fnClean,fnReact,cpFn)
+exports.dev = series(fnClean,fnReact,cpFn,fnWatch) 
 exports.default = series(fnClean,fnReact,cpFn)
  
 //exports.copy = cpFn

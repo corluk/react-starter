@@ -1,5 +1,4 @@
 import React from "react" 
- 
 import {Provider} from "react-redux"
 import front_store from "./store/front_store"
 import Component1 from "./components/index"
