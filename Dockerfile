@@ -1,13 +1,13 @@
-FROM node 
+FROM node:alpine 
 WORKDIR  /var/app 
 COPY package.json  package.json 
  
-COPY src src  
-COPY *.js .
+COPY dist  dist  
+#COPY *.js .
 COPY yarn.lock yarn.lock 
-RUN yarn  install 
-RUN yarn build 
+#RUN yarn install --production --frozen-lockfile
+#RUN yarn build 
  
 EXPOSE 8080 
-CMD yarn bootstrap
+CMD yarn boot:container
 
