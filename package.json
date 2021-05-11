@@ -77,7 +77,7 @@
     "build:server": "node_modules/.bin/cross-env NODE_ENV=production    node_modules/.bin/webpack -c webpack.server.prod.js ",
     "build": " yarn build:clean && yarn build:front & yarn build:server",
     "boot": "node dist/bootstrap.js",
-    "boot:container": "yarn install --production --frozen-lockfile && yarn bootstrap"
+    "boot:container": "yarn install --production --frozen-lockfile && yarn boot"
   },
   "keywords": [],
   "author": "",
