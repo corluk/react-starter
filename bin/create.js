@@ -60,8 +60,9 @@ ncp(path.resolve(homeDir, "test"), path.resolve(projectDir, "test"), (err) => {
   }
   console.log("done copying test files !");
 });
-dependencies = dependencies.filter((item) =>  ["ncp","copy"].indexOf(item) < 0);
+dependencies = dependencies.filter((item) => ["ncp", "copy"].indexOf(item) < 0);
 
- 
  spawn(` yarn add ${dependencies.join(" ")}`, { stdio: "inherit" });
  spawn(` yarn add -D  ${devDependencies.join(" ")}`, { stdio: "inherit" });
+
+ console.log("Finished!");

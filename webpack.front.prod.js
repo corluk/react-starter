@@ -10,7 +10,7 @@ module.exports = merge(common, {
     },
 
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "dist", "front"),
 
         filename: "bundle.js"
     },

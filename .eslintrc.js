@@ -9,7 +9,6 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:chai-friendly/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
