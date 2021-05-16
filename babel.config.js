@@ -11,5 +11,7 @@ module.exports = {
           "async": false
         }
       ]
+      , "css-modules-transform"
+      , "@babel/plugin-syntax-dynamic-import"
     ]
 };

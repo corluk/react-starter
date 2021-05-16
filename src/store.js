@@ -2,7 +2,10 @@ import sagaRunner from "./sagas/root";
 import RootReducer from "./reducers/root";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import initialState from "./boot";
+
+const initialState = {
+
+};
 
 const sagaMiddleware = createSagaMiddleware();
 

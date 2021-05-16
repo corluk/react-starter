@@ -1,5 +1,5 @@
-var browserSync = require("browser-sync");
-
+const browserSync = require("browser-sync");
+require("ignore-styles");
 
 const {createServer} = require( "./dev/server");
 // import findPort from "find-open-port";
@@ -21,5 +21,6 @@ const port = 37080;
 
 browserSync({
     files: ["dev"],
-    proxy: `localhost:${port}`
+    proxy: `localhost:${port}`,
+    open: false
 });

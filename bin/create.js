@@ -38,7 +38,7 @@ const strNewPackageJSON = JSON.stringify(newPackageJSON, null, 4);
 fs.writeFileSync(path.resolve(projectDir, "package.json"), strNewPackageJSON);
 
 copy(
-  [path.resolve(homeDir, "*.js"), path.resolve(homeDir, ".gitignore"), path.resolve(homeDir, "Dockerfile")],
+  [path.resolve(homeDir, "*.js"), path.resolve(homeDir, ".*ignore"), path.resolve(homeDir, "Dockerfile")],
   projectDir,
   (err ) => {
     if (err) {
@@ -61,7 +61,7 @@ ncp(path.resolve(homeDir, "test"), path.resolve(projectDir, "test"), (err) => {
   console.log("done copying test files !");
   return null;
 });
-dependencies = dependencies.filter((item) => ["ncp", "copy"].indexOf(item) < 0);
+dependencies = dependencies.filter((item) => ["ncp", "copy", "yargs"].indexOf(item) < 0);
 
  spawn(` yarn add ${dependencies.join(" ")}`, { stdio: "inherit" });
  spawn(` yarn add -D  ${devDependencies.join(" ")}`, { stdio: "inherit" });
