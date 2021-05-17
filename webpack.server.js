@@ -4,7 +4,6 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
 const IgnoreEmitPlugin = require("ignore-emit-webpack-plugin");
 const RunNode = require("run-node-webpack-plugin");
- 
 const merged = {...common, ...{
   target: "node",
   externals: [nodeExternals()],
@@ -15,7 +14,6 @@ const merged = {...common, ...{
                         ...[
                             new CopyWebpackPlugin({ patterns: [{"from": "views", "to": "views"}]}),
                             new IgnoreEmitPlugin( /\.css$/),
-                            
                           ]]
      },
   };
@@ -33,15 +31,15 @@ module.exports = (env)=>{
     };
   } else {
     merged.entry = "./server.js";
-    merged.mode = "development";
-    merged.watch = true;
-    merged.devtool = "eval-source-map";
-    merged.plugins = [...merged.plugins, new RunNode({scriptToRun: "browser-sync.js"}) ];
     merged.output = {
       path: path.resolve(__dirname, "dev"),
       filename: "server.js",
       libraryTarget: "commonjs2"
     };
+    merged.devtool = "eval-source-map";
+      merged.mode = "development";
+      merged.watch = true;
+      merged.plugins = [...merged.plugins, new RunNode({scriptToRun: "browser-sync.js"}) ];
   }
 
 

@@ -8,36 +8,35 @@ import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import Root from "./components/Root";
 // import { ChunkExtractor, ChunkExtractorManager } from "@loadable/server";
-const getFiles = async ()=>{
-
-   return await fs.readdir(resolve(__dirname, "assets"));
-
- };
-
-const getAssets = async ()=>{
-
-    const files = await getFiles();
-    console.log(files);
-    const cssFiles = files.filter(file => file.endsWith("css")).map(file => `/${file}`);
-    const scriptFiles = files.filter(file=> file.endsWith("js")).map(file => `/${file}`).reverse();
-  return {
-      css: cssFiles,
-      scripts: scriptFiles
-  };
+const getFiles = async () => {
+  return await fs.readdir(resolve(__dirname, "assets"));
 };
 
-
+const getAssets = async () => {
+  const files = await getFiles();
+  const cssFiles = files
+    .filter((file) => file.endsWith("css"))
+    .map((file) => `/${file}`);
+  const scriptFiles = files
+    .filter((file) => file.endsWith("js"))
+    .map((file) => `/${file}`)
+    .reverse();
+  return {
+    css: cssFiles,
+    scripts: scriptFiles,
+  };
+};
 
 export const createServer = () => {
   const app = _Express();
 
   const jsSource =
     process.env.NODE_ENV === "development" ? "dev/assets" : "dist/assets";
- app.set("view engine", "pug");
+  app.set("view engine", "pug");
 
-   app.set("views", resolve(__dirname, "views"));
-  console.log(jsSource);
-  console.log(resolve(__dirname, "..", jsSource));
+  app.set("views", resolve(__dirname, "views"));
+
+
   app.use(compression());
   app.use(_Express.static(resolve(__dirname, "..", jsSource)));
   app.use(
@@ -51,19 +50,14 @@ export const createServer = () => {
     const url = req.url;
 
     const rendered = ReactDOMServer.renderToString(
-
-        <StaticRouter url={url} context={context}>
-          <Root/>
-        </StaticRouter>
-
+      <StaticRouter url={url} context={context}>
+        <Root />
+      </StaticRouter>
     );
     const state = _Store.getState();
     const assets = await getAssets();
-    console.log(state);
-    console.log(assets);
-    console.log(rendered);
-    console.log(fs);
-  /*  let content = await fs.readFile(resolve(__dirname, "views/index.html"), "utf-8");
+
+    /*  let content = await fs.readFile(resolve(__dirname, "views/index.html"), "utf-8");
     content = content.replace("__jsx", rendered);
    // content = content.replace("__head", scriptTags);
     content = content.replace("__preLoadedState", JSON.stringify(_Store.getState()));
@@ -74,9 +68,8 @@ export const createServer = () => {
     res.render("index", {
       content: rendered,
       preLoadedState: state,
-      assets: assets
+      assets: assets,
     });
-
   });
   return app;
 };
@@ -93,6 +86,3 @@ export const listen = async (app, port) => {
     });
   });
 };
-
-
-

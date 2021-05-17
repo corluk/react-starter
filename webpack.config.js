@@ -26,15 +26,6 @@ module.exports = {
           cacheGroups: {
             reduxVendor: {
                 test: /[\\/]node_modules[\\/](redux)/,
-                /*{
-                    // `module.resource` contains the absolute path of the file on disk.
-                    // Note the usage of `path.sep` instead of / or \, for cross-platform compatibility.
-                    return (
-                      module.resource &&
-                      module.resource.match(/redux/)
-                    );
-                  },
-                  */
                 name: "redux"
             },
             reactRouterVendor: {
@@ -70,8 +61,9 @@ module.exports = {
      plugins: [
          new ESLintPlugin({
              fix: true
-         }),
+         })
      ]
 
 
 };
+

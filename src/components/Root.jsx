@@ -3,15 +3,14 @@ import { Provider } from "react-redux";
 import _Store from "../store";
 import Home from "./layouts/defaults/Home";
 import { Switch, Route } from "react-router";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 export const RootContext = createContext();
 export default () => {
   return (
     <RootContext.Provider value="">
       <Provider store={_Store}>
         <Switch>
-          <Route path="/" component={Home}>
-          </Route>
+          <Route path="/" component={Home}></Route>
           <Route path="/about">
             <Home />
           </Route>

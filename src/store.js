@@ -3,9 +3,7 @@ import RootReducer from "./reducers/root";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 
-const initialState = {
-
-};
+const initialState = {};
 
 const sagaMiddleware = createSagaMiddleware();
 
