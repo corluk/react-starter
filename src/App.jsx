@@ -2,7 +2,9 @@ import { BrowserRouter } from "react-router-dom";
 import React from "react";
 
 import { hydrate, render } from "react-dom";
-import Root from "./components/Root";
+import loadable from "@loadable/component";
+const Root = loadable(()=> import("./components/Root"));
+//import Root from "./components/Root";
 const AppWithRouter = (
   <BrowserRouter>
     <Root>
@@ -17,7 +19,7 @@ console.log(document.getElementById("app"));
 if (rootElement.hasChildNodes()) {
   hydrate(AppWithRouter, rootElement);
 } else {
-  render(AppWithRouter, rootElement);
+ render(AppWithRouter, rootElement);
 }
 /*
   ReactDOM.hydrate(

@@ -13,5 +13,6 @@ module.exports = {
       ]
       , "css-modules-transform"
       , "@babel/plugin-syntax-dynamic-import"
+      , "@loadable/babel-plugin"
     ]
 };

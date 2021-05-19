@@ -1,8 +1,15 @@
 const path = require("path");
 const ESLintPlugin = require("eslint-webpack-plugin");
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const LoadablePlugin = require("@loadable/webpack-plugin");
 module.exports = {
     context: path.resolve(__dirname, "src"),
+    entry: "./App.jsx",
+    output: {
+        filename: "[name].js"
+    },
+    mode: "production",
     module: {
         rules: [ {test: /\.jsx?/,
             use: ["babel-loader"]
@@ -12,7 +19,7 @@ module.exports = {
             use: ["url-loader?limit=100000"]
         }, {
             test: /\.css$/,
-            use: ["css-loader"]
+            use: [MiniCssExtractPlugin.loader, "css-loader"]
         }
        ],
 
@@ -24,7 +31,7 @@ module.exports = {
             maxInitialRequests: Infinity,
           minSize: 0,
           cacheGroups: {
-            reduxVendor: {
+         /*   reduxVendor: {
                 test: /[\\/]node_modules[\\/](redux)/,
                 name: "redux"
             },
@@ -47,7 +54,7 @@ module.exports = {
               babelVendor: {
                 test: /[\\/]node_modules[\\/](@babel)/,
                 name: "babel"
-              },
+              },*/
               vendor: {
                 test: /[\\/]node_modules[\\/]/,
                 name: "vendor",
@@ -55,13 +62,17 @@ module.exports = {
             },
         }
     },
+
      resolve: {
          extensions: [".js", ".jsx" ]
      },
      plugins: [
          new ESLintPlugin({
              fix: true
-         })
+         }),
+         new LoadablePlugin(),
+         new MiniCssExtractPlugin({filename: "[name].css"}),
+         new CssMinimizerPlugin(),
      ]
 
 

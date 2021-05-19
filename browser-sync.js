@@ -1,6 +1,7 @@
 const browserSync = require("browser-sync");
-require("ignore-styles");
-
+//require("ignore-styles");
+require("./boot");
+/*
 const {createServer} = require( "./dev/server");
 // import findPort from "find-open-port";
 
@@ -17,10 +18,10 @@ const port = 37080;
     console.log(`listening port ${port}`);
   });
 })();
-
+*/
 
 browserSync({
-    files: ["dev"],
-    proxy: `localhost:${port}`,
+    files: ["dist", "server", "src"],
+    proxy: `localhost:8080`,
     open: false
 });
