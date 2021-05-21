@@ -16,15 +16,13 @@ html
     meta(http-equiv="X-UA-Compatiple" content="ie-egde")
     meta(name="Description" content="Some desc")
     title DEV-SERVER 
-    +addCss(assets.css)  
     link(rel="stylesheet",href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(rel="stylesheet",href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap")
     
   body
     div(id="app") !{content}
-    div(id="script") !{JSON.stringify(assets)}
 
 script(type="text/javascript") 
        | window.__PRELOADED_STATE__ =!{JSON.stringify(preLoadedState)}
-script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js", integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf", crossorigin="anonymous")
-+addScripts(assets.scripts) 
+#{scripts}
+<!-- +addScripts(assets.scripts)  -->

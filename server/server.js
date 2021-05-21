@@ -7,6 +7,7 @@ import fs from "fs/promises";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import Root from "../src/components/Root";
+import { ChunkExtractor, ChunkExtractorManager } from "@loadable/server";
 // import { ChunkExtractor, ChunkExtractorManager } from "@loadable/server";
 const getFiles = async () => {
   return await fs.readdir(resolve(__dirname, "..", "dist"));
@@ -27,6 +28,7 @@ const getAssets = async () => {
   };
 };
 
+ 
 export const createServer = () => {
   const app = _Express();
   app.set("view engine", "pug");
@@ -39,16 +41,28 @@ export const createServer = () => {
       extended: true,
     })
   );
+  const statsFile = resolve(__dirname, "../dist/loadable-stats.json");
+  console.log(statsFile);
+  const chunkExtractor = new ChunkExtractor({ statsFile, publicPath: "/", });
+  console.log("chunkExtractor.namespace");
+  console.log(chunkExtractor.namespace);
+ // const { default: AppX } = chunkExtractor.requireEntrypoint();
+ /* const appX = <App />;
+  console.log(appX);*/
 
+  const scriptTags = chunkExtractor.getScriptTags();
+  console.log(scriptTags);
   app.get("/", async (req, res) => {
     const context = {};
     const url = req.url;
-
+    const jsx = chunkExtractor.collectChunks(<StaticRouter url={url} context={context}><Root /></StaticRouter>);
     const rendered = ReactDOMServer.renderToString(
-      <StaticRouter url={url} context={context}>
-        <Root />
-      </StaticRouter>
+      <ChunkExtractorManager extractor={chunkExtractor} >
+        {jsx}
+      </ChunkExtractorManager>
     );
+    //const rendered = ReactDOMServer.renderToString(jsx);
+    console.log(rendered);
     const state = _Store.getState();
     const assets = await getAssets();
 
@@ -63,7 +77,8 @@ export const createServer = () => {
     res.render("index", {
       content: rendered,
       preLoadedState: state,
-      assets: assets,
+    //  scripts: chunkExtractor.getScriptTags()
+//      assets: assets,
     });
   });
   return app;
