@@ -1,9 +1,12 @@
 import React, { createContext } from "react";
 import { Provider } from "react-redux";
 import _Store from "../store";
-import Home from "./layouts/defaults/Home";
 import { Switch, Route } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import loadable from "@loadable/component";
+
+const Home = loadable(()=> import("./layouts/defaults/Home"));
+
 export const RootContext = createContext();
 export default () => {
   return (

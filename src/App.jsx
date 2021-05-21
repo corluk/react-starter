@@ -1,16 +1,10 @@
-import { BrowserRouter } from "react-router-dom";
 import React from "react";
-
 import { hydrate, render } from "react-dom";
-import loadable ,{loadableReady} from "@loadable/component";
-const Root = loadable(()=> import("./components/Root"));
+import {loadableReady} from "@loadable/component";
+import Boot from "./Boot";
 //import Root from "./components/Root";
 const AppWithRouter = (
-  <BrowserRouter>
-    <Root>
-      <h1> Hello World from Javascript after SSR </h1>
-    </Root>
-  </BrowserRouter>
+  <Boot />
 );
 loadableReady(()=>{
 
@@ -19,21 +13,12 @@ loadableReady(()=>{
   console.log(document.getElementById("app"));
   // render(AppWithRouter, rootElement);
   if (rootElement.hasChildNodes()) {
+    console.log("hydrating..");
     hydrate(AppWithRouter, rootElement);
   } else {
+    console.log("rendering..");
+
    render(AppWithRouter, rootElement);
   }
 
 });
-
-
-/*
-  ReactDOM.hydrate(
-    <BrowserRouter>
-      <Root>
-        <h1> Hello World from Javascript after SSR </h1>
-      </Root>
-    </BrowserRouter>,
-    document.getElementById("app")
-  );
-  */
