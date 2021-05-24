@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link href="<%= htmlWebpackPlugin.files.favicon.replace(/^.*[\\\/]/, '') %>" rel="shortcut icon">
+    {{{links}}}
+    {{{styles}}}
+    <%=  htmlWebpackPlugin.tags.headTags.filter(tag => tag.tagName == "meta").join("") %>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+   {{{state}}}
+  {{{scripts}}}
+</html>
