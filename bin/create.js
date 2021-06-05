@@ -31,6 +31,7 @@ const newPackageJSON = {
   scripts: packageJSON.scripts,
   license: packageJSON.license,
   author: packageJSON.author,
+  resolutions: packageJSON.resolutions
 };
 
 const strNewPackageJSON = JSON.stringify(newPackageJSON, null, 4);

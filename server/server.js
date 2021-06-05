@@ -19,9 +19,7 @@ const handler = async (req, res) => {
   const rendered = ReactDOMServer.renderToString(
       jsx
   );
-  //const rendered = ReactDOMServer.renderToString(jsx);
-  console.log("rendered");
-  console.log(rendered);
+ 
    const state = `<script type="text/javascript"> 
    window.__PRELOADED_STATE__ = ${JSON.stringify(_Store.getState())};
    </script>`;
@@ -32,6 +30,7 @@ const handler = async (req, res) => {
       links: chunkExtractor.getLinkTags(),
       styles: chunkExtractor.getStyleTags(),
       state: state,
+      rendered : rendered
     });
   }
  

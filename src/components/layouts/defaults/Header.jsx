@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Button } from "@material-ui/core";
-import MyAppBar from "./MyAppBar";
+ 
 
 const onClick = ()=>{
 
@@ -10,7 +10,7 @@ const onClick = ()=>{
 export default ()=>{
 
     return <>
-    <MyAppBar />
+    
 </>;
 };
 

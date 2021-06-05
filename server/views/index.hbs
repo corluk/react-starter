@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8"/>
     <link href="favicon.svg" rel="shortcut icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+    <style type="text/css">
+        body {
+            margin: 0;
+          }
+         </style>
     {{{links}}}
+
     {{{styles}}}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content="{{description}}">
     <title>HTML WEBPACK DEVSERVER</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">{{{rendered}}}</div>
   </body>
    {{{state}}}
   {{{scripts}}}

@@ -21,8 +21,9 @@ module.exports = merge(common, {
     mode: "development",
     devtool: "eval-source-map",
     watch: true,
+    /*
     devServer: {
         proxy: {"/": "http://localhost:8080"},
         contentBase: path.join(__dirname, "dist")
-    } 
+    } */
 });

@@ -1,3 +1,14 @@
 import React from "react";
+import styled from 'styled-components'
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
 
-export default ()=> (<div> this is public component </div>);
+// Create a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+export default ()=> (<Wrapper> <Title> Hello from public0 </Title></Wrapper>);
