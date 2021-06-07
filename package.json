@@ -6,8 +6,6 @@
     "create-react": "./bin/create.js"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.6.3",
-    "@emotion/react": "^11",
     "@loadable/component": "^5.15.0",
     "@loadable/server": "^5.15.0",
     "add": "^2.0.6",
