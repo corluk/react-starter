@@ -1,6 +1,7 @@
 import _Express from "express";
 import compression from "compression";
 import React from "react";
+React.useLayoutEffect = React.useEffect;
 import { resolve } from "path";
 import _Store from "../src/store";
 import ReactDOMServer from "react-dom/server";
@@ -19,10 +20,10 @@ const handler = async (req, res) => {
   const rendered = ReactDOMServer.renderToString(
       jsx
   );
- 
+
    const state = `<script type="text/javascript"> 
    window.__PRELOADED_STATE__ = ${JSON.stringify(_Store.getState())};
-   </script>`;
+   </script>`; 
 
     res.render("index", {
       description: "test description",

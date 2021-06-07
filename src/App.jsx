@@ -3,6 +3,9 @@ import { hydrate, render } from "react-dom";
 import {loadableReady} from "@loadable/component";
 import { BrowserRouter } from "react-router-dom";
 import Root from "./components/Root";
+
+import "./assets/theme.less";
+
 //import Root from "./components/Root";
 const AppWithRouter = (
   <BrowserRouter>
