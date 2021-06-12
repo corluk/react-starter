@@ -1,4 +1,7 @@
-require("@babel/register")( );
+const config  = require( "./babel.config"); 
+
+ 
+require("@babel/register")( config);
 
 const createServer = require("./server/server.js").createServer;
 

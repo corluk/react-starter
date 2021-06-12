@@ -1,23 +1,30 @@
 import React, { createContext } from "react";
 import { Provider } from "react-redux";
 import _Store from "../store";
-
+import {ThemeProvider } from   "@material-ui/core/styles";
 import loadable from "@loadable/component";
-import { ConfigProvider } from 'antd';
-import trTR from "antd/lib/locale/tr_TR";
+
 
  
-const Home = loadable(()=> import("./layouts/defaults/Home"));
+ 
+const Home = loadable(()=> import("../Layout"));
  
 export const RootContext = createContext();
 export default () => {
+
+  React.useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
   return (
     <RootContext.Provider value="">
 
       <Provider store={_Store}>
-        <ConfigProvider locale={trTR}>
+        
           <Home />
-          </ConfigProvider>
+         
       </Provider>
 
     </RootContext.Provider>

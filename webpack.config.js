@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     context: path.resolve(__dirname, "src"),
-    entry: "./App.jsx",
+    entry: "./sys/App.jsx",
     output: {
         filename: "[name].js"
     },
@@ -39,6 +39,7 @@ module.exports = {
     },
     optimization: {
         minimize: true,
+        runtimeChunk : 'single',
         splitChunks: {
             chunks: "all",
             maxInitialRequests: Infinity,

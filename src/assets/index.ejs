@@ -11,8 +11,9 @@
           }
          </style>
     {{{links}}}
-
+    <style id="jss-server-side"> {{{materialCss}}}</style>
     {{{styles}}}
+    
     <%=  htmlWebpackPlugin.tags.headTags.filter(tag => tag.tagName == "meta").join("") %>
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>

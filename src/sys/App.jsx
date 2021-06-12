@@ -2,30 +2,28 @@ import React from "react";
 import { hydrate, render } from "react-dom";
 import {loadableReady} from "@loadable/component";
 import { BrowserRouter } from "react-router-dom";
-import Root from "./components/Root";
+import Root from "./Root";
 
-import "./assets/theme.less";
+ 
 
 //import Root from "./components/Root";
 const AppWithRouter = (
   <BrowserRouter>
-    <Root>
-      <h1> Hello World from Javascript after SSR </h1>
-    </Root>
+    <Root/>
   </BrowserRouter>
 );
-console.log("this is rendering...");
+ 
 loadableReady(()=>{
 
-  console.log(AppWithRouter);
+ 
   const rootElement = document.getElementById("app");
-  console.log(document.getElementById("app"));
-  // render(AppWithRouter, rootElement);
+ 
+  
   if (rootElement.hasChildNodes()) {
-    console.log("hydrating..");
+   
     hydrate(AppWithRouter, rootElement);
   } else {
-    console.log("rendering..");
+    
 
    render(AppWithRouter, rootElement);
   }
