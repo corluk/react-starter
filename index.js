@@ -1,4 +1,10 @@
-require("@babel/register")( );
+let config = require("./babel.config"); 
+ config.plugins = [...config.plugins, ...[["babel-plugin-transform-import-ignore", {
+    patterns: [/\.s?css$/, /\.less$/],
+  }]]];
+
+
+require("@babel/register")( config);
 
 const createServer = require("./server/server.js").createServer;
 

@@ -9,7 +9,8 @@ import { Layout, Breadcrumb , Image  } from 'antd';
 const { Header, Content, Footer } = Layout;
 const {SubMenu} = Menu;
 
-import "../../../assets/theme.less";
+import "../scss/index.scss";
+import "./theme.less";
 export default ()=>{
    const [dir, { toggle, setLeft, setRight } ] = useToggle( "horizontal", "vertical");
   
@@ -17,6 +18,7 @@ export default ()=>{
   console.log(dir);
   return <>
     <div>
+        Hello World from page index 
     </div>
   </>
 

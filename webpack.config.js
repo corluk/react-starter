@@ -21,8 +21,8 @@ module.exports = {
             test: /\.(png|gif|woff|woff2|eot|ttf|svg)$/,
             use: ["url-loader?limit=100000"]
         }, {
-            test: /\.(css|less|scss)$/,
-            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader",
+            test: /\.(css|less)$/,
+            use: [MiniCssExtractPlugin.loader, "css-loader",
             {
                 loader: "less-loader",
                 options: {
@@ -32,7 +32,8 @@ module.exports = {
                     lessOptions: {
                          javascriptEnabled: true
                     }}}]
-        }
+        },
+        { test: /\.scss$/, use: ["sass-loader", "css-loader"]}
 
        ],
 

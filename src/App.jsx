@@ -2,16 +2,14 @@ import React from "react";
 import { hydrate, render } from "react-dom";
 import {loadableReady} from "@loadable/component";
 import { BrowserRouter } from "react-router-dom";
-import Root from "./components/Root";
+import Index from "./pages/Index";
 
-import "./assets/theme.less";
+
 
 //import Root from "./components/Root";
 const AppWithRouter = (
   <BrowserRouter>
-    <Root>
-      <h1> Hello World from Javascript after SSR </h1>
-    </Root>
+    <Index />
   </BrowserRouter>
 );
 console.log("this is rendering...");
