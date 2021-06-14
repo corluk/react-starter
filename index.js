@@ -1,8 +1,4 @@
-let config = require("./babel.config"); 
- config.plugins = [...config.plugins, ...[["babel-plugin-transform-import-ignore", {
-    patterns: [/\.s?css$/, /\.less$/],
-  }]]];
-
+const config = require( "./babel.config");
 
 require("@babel/register")( config);
 

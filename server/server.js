@@ -1,12 +1,13 @@
 import _Express from "express";
 import compression from "compression";
 import React from "react";
-React.useLayoutEffect = React.useEffect;
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/core/styles';
 import { resolve } from "path";
 import _Store from "../src/store";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
-import Root from "../src/components/Root";
+import Root from "../src/sys/Root";
+import theme from "../src/theme";
 import hbs from "hbs";
 import { ChunkExtractor } from "@loadable/server";
 // import { ChunkExtractor, ChunkExtractorManager } from "@loadable/server";
@@ -15,8 +16,14 @@ const chunkExtractor = new ChunkExtractor({ statsFile, publicPath: "/", });
 const handler = async (req, res) => {
   const context = {};
   const url = req.url;
+  const sheet = new ServerStyleSheets();
   console.log(`url : ${url}`);
-  const jsx = chunkExtractor.collectChunks(<StaticRouter url={url} context={context}><Root /></StaticRouter>);
+  const ThemedRoot = <ThemeProvider theme={theme}>
+      <Root/>
+  </ThemeProvider>
+  const  Elements  = sheet.collect(ThemedRoot);
+  const jsx = chunkExtractor.collectChunks( 
+          <StaticRouter url={url} context={context}>{Elements}</StaticRouter>);
   const rendered = ReactDOMServer.renderToString(
       jsx
   );
@@ -30,6 +37,7 @@ const handler = async (req, res) => {
       scripts: chunkExtractor.getScriptTags(),
       links: chunkExtractor.getLinkTags(),
       styles: chunkExtractor.getStyleTags(),
+      materialCss : sheet.toString(),
       state: state,
       rendered : rendered
     });
@@ -53,9 +61,9 @@ export const createServer = () => {
 
   const scriptTags = chunkExtractor.getScriptTags();
   console.log(scriptTags);
-  app.get("/", handler);
-    app.get("/public", handler);
-    app.get("/private", handler);
+  app.get("/*", handler);
+    //app.get("/public", handler);
+   // app.get("/private", handler);
   return app;
 };
 

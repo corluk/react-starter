@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     context: path.resolve(__dirname, "src"),
-    entry: "./App.jsx",
+    entry: "./sys/App.jsx",
     output: {
         filename: "[name].js"
     },
@@ -22,16 +22,7 @@ module.exports = {
             use: ["url-loader?limit=100000"]
         }, {
             test: /\.(css|less)$/,
-            use: [MiniCssExtractPlugin.loader, "css-loader",
-            {
-                loader: "less-loader",
-                options: {
-                    //  less-loader 6.0 之前
-                    //  javascriptEnabled: true
-                    //  less-loader 6.0 之后
-                    lessOptions: {
-                         javascriptEnabled: true
-                    }}}]
+            use: [MiniCssExtractPlugin.loader, "css-loader"]
         },
         { test: /\.scss$/, use: ["sass-loader", "css-loader"]}
 
@@ -40,6 +31,7 @@ module.exports = {
     },
     optimization: {
         minimize: true,
+        runtimeChunk: "single",
         splitChunks: {
             chunks: "all",
             maxInitialRequests: Infinity,

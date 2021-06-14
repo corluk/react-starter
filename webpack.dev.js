@@ -9,7 +9,7 @@ common.plugins = [...common.plugins, new BrowserSyncPlugin({
     proxy: "localhost:38080",
     open: false
 }), new RunNodeWebpackPlugin({
-    scriptToRun: "./boot.js"
+    scriptToRun: "./index.js"
 })];
 /*
 common.plugins = [...common.plugins, new RunNodeWebpackPlugin({

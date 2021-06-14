@@ -2,28 +2,28 @@ import React from "react";
 import { hydrate, render } from "react-dom";
 import {loadableReady} from "@loadable/component";
 import { BrowserRouter } from "react-router-dom";
-import Index from "./pages/Index";
+import Root from "./Root";
 
-
+ 
 
 //import Root from "./components/Root";
 const AppWithRouter = (
   <BrowserRouter>
-    <Index />
+    <Root/>
   </BrowserRouter>
 );
-console.log("this is rendering...");
+ 
 loadableReady(()=>{
 
-  console.log(AppWithRouter);
+ 
   const rootElement = document.getElementById("app");
-  console.log(document.getElementById("app"));
-  // render(AppWithRouter, rootElement);
+ 
+  
   if (rootElement.hasChildNodes()) {
-    console.log("hydrating..");
+   
     hydrate(AppWithRouter, rootElement);
   } else {
-    console.log("rendering..");
+    
 
    render(AppWithRouter, rootElement);
   }

@@ -1,15 +1,9 @@
 import React, {useState , useRef} from "react";
 import { Button, DatePicker, version } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
-import { Menu } from "antd"; 
-import {useToggle } from "ahooks";
-import { Row, Col } from 'antd';
-import { Layout, Breadcrumb , Image  } from 'antd';
  
-const { Header, Content, Footer } = Layout;
-const {SubMenu} = Menu;
-
-import "../../../assets/theme.less";
+import {useToggle } from "ahooks";
+ 
+ 
 export default ()=>{
    const [dir, { toggle, setLeft, setRight } ] = useToggle( "horizontal", "vertical");
   
@@ -17,7 +11,13 @@ export default ()=>{
   console.log(dir);
   return <>
     <div>
-    </div>
+      <Button> Click Me! </Button>
+      <DatePicker></DatePicker>
+      Hello World 
+    </div> 
+     
+     
+ 
   </>
 
   ;
