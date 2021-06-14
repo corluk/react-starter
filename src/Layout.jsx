@@ -1,7 +1,8 @@
 import React, {useState , useRef} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Menu, Button , TextField } from "@material-ui/core"; 
+import { Menu, Button , TextField , NoSsr } from "@material-ui/core"; 
 import {useToggle } from "ahooks";
+import LeftMenu from "./components/leftmenu"
 import "./css/index.css";
 const useStyles = makeStyles((theme) => ({
   gridContainer: {
@@ -34,6 +35,8 @@ const items = Array.from(Array(10).keys()).map( i => (<div key={i} className={cl
   console.log(toggle);
   console.log(dir);
   return <>
+  <LeftMenu />  
+ 
   <div className={classes.gridContainer}>
     {items}
   </div>
