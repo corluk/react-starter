@@ -1,8 +1,8 @@
 import React from "react";
-import { Hidden, Typography, IconButton as Button } from "@material-ui/core";
+import { Hidden, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { AccessAlarm } from "@material-ui/icons";
-import "./style.css";
+
 const useStyles = makeStyles(theme =>({
 
     container: {

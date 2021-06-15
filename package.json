@@ -13,6 +13,7 @@
     "add": "^2.0.6",
     "ahooks": "^2.10.5",
     "axios": "^0.21.1",
+    "clx": "^1.0.0",
     "compression": "^1.7.4",
     "copy": "^0.3.2",
     "dotenv": "^9.0.0",
@@ -100,7 +101,7 @@
     "dev": "yarn clean && yarn  dev:front && yarn dev:boot ",
     "build": " yarn clean && node_modules/.bin/cross-env NODE_ENV=production    node_modules/.bin/webpack --env production -c webpack.config.js ",
     "boot": "node index.js",
-    "sass:dev" : "node_modules/.bin/sass sass/index:src/css --watch",
+    "sass:dev": "node_modules/.bin/sass sass/index:src/css --watch",
     "boot:container": "yarn install --production --frozen-lockfile && yarn boot"
   },
   "keywords": [],

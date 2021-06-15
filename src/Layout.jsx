@@ -2,8 +2,9 @@ import React, {useState , useRef} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu, Button , TextField , NoSsr } from "@material-ui/core"; 
 import {useToggle } from "ahooks";
+import TopHeader from "./layouts/LayerTop";
 import LeftMenu from "./components/leftmenu"
-import "./theme.css";
+ 
 const useStyles = makeStyles((theme) => ({
   gridContainer: {
     display: "grid",
@@ -35,13 +36,11 @@ const items = Array.from(Array(10).keys()).map( i => (<div key={i} className={cl
   console.log(toggle);
   console.log(dir);
   return <>
-  <div className="wrapper">
-  <div className="box header">Header</div>
-  <div className="box sidebar">Sidebar</div>
-  <div className="box sidebar2">Sidebar 2</div>
-  <div className="box content">Content
-    <br /> More content than we had before so this column is now quite tall.</div>
-  <div className="box footer">Footer</div>
-</div>
+  
+  <TopHeader>
+      <div> This is a children </div>
+
+
+  </TopHeader>
   </>;
   };
