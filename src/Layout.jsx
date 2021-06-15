@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Menu, Button , TextField , NoSsr } from "@material-ui/core"; 
 import {useToggle } from "ahooks";
 import LeftMenu from "./components/leftmenu"
-import "./css/index.css";
+import "./theme.css";
 const useStyles = makeStyles((theme) => ({
   gridContainer: {
     display: "grid",
@@ -35,25 +35,13 @@ const items = Array.from(Array(10).keys()).map( i => (<div key={i} className={cl
   console.log(toggle);
   console.log(dir);
   return <>
-  <LeftMenu />  
- 
-  <div className={classes.gridContainer}>
-    {items}
-  </div>
-    <div>
-
-      <Button> Click Me! </Button>
-      <TextField
-        id="date"
-        label="Birthday"
-        type="date"
-        defaultValue="2017-05-24"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-      Hello World
-    </div>
+  <div className="wrapper">
+  <div className="box header">Header</div>
+  <div className="box sidebar">Sidebar</div>
+  <div className="box sidebar2">Sidebar 2</div>
+  <div className="box content">Content
+    <br /> More content than we had before so this column is now quite tall.</div>
+  <div className="box footer">Footer</div>
+</div>
   </>;
   };
