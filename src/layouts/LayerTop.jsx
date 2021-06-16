@@ -33,7 +33,12 @@ const useStyles = makeStyles(theme =>({
         flexGrow:1
     }),
     middle : props =>({
+        display : "flex",
         flexGrow:4
+    }),
+
+    middleText: props =>({
+        flex :1 
     }),
     rigth : props =>({
         flexGrow:1
@@ -58,7 +63,7 @@ export default (props)=>{
                 <div className={classes.left}> LEFT </div>
 
                 <div className={classes.middle}> 
-                    <TextField InputLabelProps={{
+                    <TextField className={classes.middleText} InputLabelProps={{
             shrink: true,
           }}  onChange={handleChange}/>
                  </div>

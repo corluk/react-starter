@@ -47,7 +47,13 @@ copy(
     }
   }
 );
-
+ncp(path.resolve(homeDir, "server"), path.resolve(projectDir, "server"), (err) => {
+  if (err) {
+    return console.error(err);
+  }
+  console.log("done, copying server files !");
+  return null;
+});
 ncp(path.resolve(homeDir, "src"), path.resolve(projectDir, "src"), (err) => {
   if (err) {
     return console.error(err);
